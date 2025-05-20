@@ -1,0 +1,14 @@
+name: Auto-Tag Release
+
+on:
+  push:
+    branches: [ main ]   # Run only on push to main branch
+
+jobs:
+  tag:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4   # Check out the code
+      - uses: Klemensas/action-autotag@stable   # Auto-tag action
+        with:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Required for access
